@@ -6,4 +6,10 @@ describe("lsh library", function()
 			assert.are_same({'123\n', 0}, {lsh 'echo 123'})
 		end)
 	end)
+
+	describe("__index", function()
+		it("gets environment variable's value", function()
+
+		end)
+	end)
 end)
