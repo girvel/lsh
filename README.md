@@ -19,6 +19,6 @@ sudo luarocks build
 ## Usage
 
 ```lua
-lsh '<any shell command>'  # makes a shell call, returns its output, exit code
-lsh.<variable>             # returns environment variable's value
+lsh '<any shell command>'  -- makes a shell call, returns its output, exit code
+lsh.<variable>             -- returns environment variable's value
 ```
