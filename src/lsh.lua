@@ -17,7 +17,7 @@ mt.__call = function(self, command)
 		return result
 	end
 	
-	return call(command), call 'echo $?'
+	return call(command), tonumber(call 'echo $?')
 end
 
 return lsh
