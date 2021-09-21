@@ -1,0 +1,18 @@
+--- Tiny library encapsulating shell calls
+-- Works like this:
+-- lsh 'cat .temp'
+-- lsh 'sudo aptitude update | sudo tee -a $APTITUDE_LOGS/update.txt'
+
+local lsh = {}
+local mt = {}
+setmetatable(lsh, mt)
+
+--- Executes shell command and returns output
+mt.__call = function(self, command)
+	local stream = io.popen(command)
+	local result = stream:read "*a"
+	stream:close()
+	return result
+end
+
+return lsh
