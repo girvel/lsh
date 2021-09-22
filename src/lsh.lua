@@ -29,7 +29,7 @@ end
 -- @param index variable's name
 -- @return variable's value
 mt.__index = function(self, index)
-	return call('echo $' .. index)
+	return call('echo -n $' .. index)
 end
 
 return lsh
