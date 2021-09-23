@@ -1,5 +1,5 @@
 package = "lsh"
-version = "1.0-3"
+version = "1.0-4"
 source = {
    url = "https://github.com/girvel/lsh"
 }

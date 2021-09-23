@@ -13,15 +13,21 @@ local call = function(source)
 	local stream = io.popen(source)
 	local result = stream:read "*a"
 	stream:close()
-	return result:sub(1, #result - 1)
+	return result
 end
 	
 --- Executes shell command
 -- @param self lsh module
 -- @param command shell command
 -- @return command's output, exit code as a number
-mt.__call = function(self, command)	
-	return call(command), tonumber(call 'echo $?')
+mt.__call = function(self, command, escape_newline)
+	local result, exit_code = call(command), tonumber(call 'echo $?')
+
+	if escape_newline then
+		result = result:sub(1, #result - 1)
+	end
+
+	return result, exit_code
 end
 
 --- Requests system environment variable's value
@@ -29,7 +35,7 @@ end
 -- @param index variable's name
 -- @return variable's value
 mt.__index = function(self, index)
-	return call('echo $' .. index)
+	return call('echo -n $' .. index)
 end
 
 return lsh
