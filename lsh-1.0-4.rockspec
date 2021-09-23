@@ -1,7 +1,8 @@
 package = "lsh"
 version = "1.0-4"
 source = {
-   url = "https://github.com/girvel/lsh"
+   url = "git://github.com/girvel/lsh",
+   tag = "1.0"
 }
 description = {
    homepage = "https://github.com/girvel/lsh",
