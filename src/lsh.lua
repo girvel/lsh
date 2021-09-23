@@ -13,7 +13,7 @@ local call = function(source)
 	local stream = io.popen(source)
 	local result = stream:read "*a"
 	stream:close()
-	return result
+	return result:sub(1, #result - 1)
 end
 	
 --- Executes shell command
@@ -29,7 +29,7 @@ end
 -- @param index variable's name
 -- @return variable's value
 mt.__index = function(self, index)
-	return call('echo -n $' .. index)
+	return call('echo $' .. index)
 end
 
 return lsh
